@@ -1,0 +1,201 @@
+        //** LIBARYRY MANAGEMENT SYSTEM USING DATA STRUCTUER AND ALGORITHM IN C PROGRAMMING **//
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+#include<string.h>
+
+int main()
+{
+	int ch;
+	int fine;
+	struct library
+{  
+   
+    char book_name[3];  
+    char author_name[3];  
+    int book_id[3]; 
+    int issue_date,issue_month,issue_year;
+    int due_date,due_month,due_year;
+    int fine;
+  
+};
+  
+  	struct library lib[3];   //use structure
+    char username[15];
+    char password[15];
+    int i, j, count;  
+    i = 0;  
+    j = 0;  
+    count = 0; 
+
+	while(1)
+	{
+	
+	printf("--------LIBRARY MANAGEMENT SYSTEM--------\n");
+	printf(" 1.USER\n 2.ADMIN\n");
+	printf("enter your choice");
+	scanf("%d",&ch);
+	
+	switch(ch)
+	{
+		case 1:printf("USER");
+		       
+ 
+ 
+           printf("Enter your username:\n"); 
+           scanf("%s",&username); 
+ 
+           printf("Enter your password:\n"); 
+           scanf("%s",&password); 
+ 
+    if(strcmp(username,"B")==0)
+        { 
+               if(strcmp(password,"567")==0)
+	     	{ 
+                printf("\nWelcome.Login Success!"); 
+	        }
+	         else
+	         { 
+            printf("\nwrong password"); 
+             } 
+        } 
+           else 
+	{ 
+           printf("\nUser doesn't exist"); 
+      
+	} 
+     
+		printf(" Issue books are------\n");       
+		printf(" Roll no   Name       issue date   book name    due date\n");
+		printf(" 186       Akanksha   12/02/22     Ikigai       19/02/22 \n");
+		printf(" 190       Radhika    15/07/22     Royal        22/07/22\n");	   
+		printf(" 166       Tanvi      17/05/23     The sky      25/07/23\n");
+		
+	    break;
+	
+		case 2:printf("ADMIN\n");
+		
+		 printf("Enter your username:\n"); 
+    scanf("%s",&username); 
+ 
+    printf("Enter your password:\n"); 
+    scanf("%s",&password); 
+ 
+    if(strcmp(username,"A")==0)
+	{ 
+        if(strcmp(password,"123")==0)
+		{ 
+          printf("\nWelcome.Login Success!"); 
+	    }
+	   else
+	   { 
+           printf("\nwrong password"); 
+       } 
+    } 
+  else 
+	{ 
+      printf("\nUser doesn't exist"); 
+      break;
+	} 
+     
+		 
+    
+     while(j!=7)  
+    {  
+        
+        printf(" \n\n  1. Add Book details\n ");  
+        printf(" 2. Display the list of books \n ");  
+        printf(" 3. Issue date\n ");  
+        printf(" 4. Due date\n");
+        printf("  5. Display the total no. of books in library\n\n");
+        printf("6.Exit\n");
+        
+        printf(" Enter the number: ");  
+        scanf(" %d", &j);  
+  
+  
+      switch(j)  
+        {  
+            
+            case 1:  
+                printf(" \nYou can add the details of the book ");  
+                printf(" \nEnter the book name: ");  
+                scanf(" %s", lib[i].book_name);  
+                printf(" \nEnter the author name: ");  
+                scanf(" %s", lib[i].author_name); 
+			    printf("\nEnter book id: ");
+				scanf("%d",lib[i].book_id);
+				printf("\n enter the issue date(dd/mm/yyyy):");
+                scanf("%d/%d/%d",&lib[i].issue_date,&lib[i].issue_month,&lib[i].issue_year);
+                printf("\n enter the due date(dd/mm/yyyy):");
+                scanf("%d/%d/%d",&lib[i].due_date,&lib[i].due_month,&lib[i].due_year);
+				printf("Enter fine");
+				scanf("%d",&lib[i].fine);
+                count = count + 1;  
+                i = i + 1;  
+                break;  
+  
+            case 2:  
+                 
+                if (count==0)  
+                {  
+                    printf(" \nThere are no books stored!!\n\n ");  
+                }  
+                else  
+                {  
+                    
+                    printf(" \nYou can view the list of books ");  
+                    printf(" \nThe list of books are: "); 
+					 
+                    for(i=0;i<count;i++)  
+                    {  
+                        printf(" \nThe name of the book is:    %s ", lib[i].book_name);  
+                        printf(" \nThe name of the author is:    %s ", lib[i].author_name);  
+                        printf(" \nBook id is:    %d" , lib[i].book_id);  
+                         
+                    }  
+                }  
+                break;  
+                
+            case 3:  
+                
+				if(count!=0)
+				{
+					for(i=0;i<count;i++)
+					{
+					printf("issue date of book %d is : %d/%d/%d\n",i+1,lib[i].issue_date,lib[i].issue_month,lib[i].issue_year);
+					}
+				}
+				else
+				printf("ENTER BOOK DETAILS\n\n");
+				break;
+				
+			case 4:
+				if(count!=0)
+				{
+					for(i=0;i<count;i++)
+					{
+					printf("due date of book %d is : %d/%d/%d\n",i+1,lib[i].due_date,lib[i].due_month,lib[i].due_year);
+					}
+				}
+				else
+				printf("ENTER BOOK DETAILS\n\n");
+                break;
+                
+  
+            case 5: printf(" \nTotal number of books in the library are: %d\n\n ", count);  
+                    break;
+                    
+            case 6:exit(0);
+					
+					  
+        }
+}
+           case 3:exit(0);
+           default:printf("invalid choice");
+}
+
+}
+return 0;
+}
